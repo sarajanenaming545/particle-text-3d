@@ -276,10 +276,11 @@ pos.x += cos(uTime * aSpeed * 0.5 + position.y) * 0.2;
 
 ---
 
-## License
 
-MIT. Use it, learn from it, make it your own.
-
----
+<div align="center">
 
 *Built with Three.js and a fascination for the space between code and light.*
+</br>
+Made with ❤️ by <a href="https://sebas-dev.vercel.app/" target="_blank" rel="noopener noreferrer">Sebastián V</a>
+
+</div>
