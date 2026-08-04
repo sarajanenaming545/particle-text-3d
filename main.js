@@ -42,6 +42,13 @@ scene.add(pointLight2);
 
 const clock = new THREE.Clock();
 
+const mouse = new THREE.Vector2(9999, 9999);
+const mouseWorld = new THREE.Vector3(9999, 9999, 0);
+const repulsionPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+const raycaster = new THREE.Raycaster();
+const REPEL_RADIUS = 2.2;
+const REPEL_FORCE = 4.5;
+
 const sphereGeo = new THREE.IcosahedronGeometry(0.055, 2);
 const material = new THREE.MeshPhysicalMaterial({
     color: 0x99bbff,
@@ -131,18 +138,14 @@ function updateTargets() {
 function initColors() {
     for (let i = 0; i < COUNT; i++) {
         const i3 = i * 3;
-        const isTop = i < TOP_COUNT;
-        const t = Math.random();
-
-        if (isTop) {
-            colors[i3] = THREE.MathUtils.lerp(0.3, 0.6, t);
-            colors[i3 + 1] = THREE.MathUtils.lerp(0.5, 0.7, t);
-            colors[i3 + 2] = THREE.MathUtils.lerp(0.9, 1.0, t);
-        } else {
-            colors[i3] = THREE.MathUtils.lerp(0.5, 0.9, t);
-            colors[i3 + 1] = THREE.MathUtils.lerp(0.3, 0.6, t);
-            colors[i3 + 2] = THREE.MathUtils.lerp(0.4, 0.8, t);
-        }
+        const hue = Math.random();
+        const sat = 0.5 + Math.random() * 0.5;
+        const light = 0.4 + Math.random() * 0.3;
+        const c = new THREE.Color();
+        c.setHSL(hue, sat, light);
+        colors[i3] = c.r;
+        colors[i3 + 1] = c.g;
+        colors[i3 + 2] = c.b;
     }
 }
 
@@ -167,7 +170,19 @@ window.addEventListener('resize', () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
 });
 
+canvas.addEventListener('mousemove', (e) => {
+    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    raycaster.ray.intersectPlane(repulsionPlane, mouseWorld);
+});
+
+canvas.addEventListener('mouseleave', () => {
+    mouseWorld.set(9999, 9999, 0);
+});
+
 const color = new THREE.Color();
+const _diff = new THREE.Vector3();
 
 function animate() {
     requestAnimationFrame(animate);
@@ -179,11 +194,30 @@ function animate() {
         const ty = targetPositions[i3 + 1];
         const tz = targetPositions[i3 + 2];
 
+        let finalX = tx;
+        let finalY = ty;
+        let finalZ = tz;
+
+        _diff.set(
+            positions[i3] - mouseWorld.x,
+            positions[i3 + 1] - mouseWorld.y,
+            positions[i3 + 2] - mouseWorld.z
+        );
+        const dist = _diff.length();
+
+        if (dist < REPEL_RADIUS && dist > 0.001) {
+            const force = (1 - dist / REPEL_RADIUS) * REPEL_FORCE;
+            _diff.normalize().multiplyScalar(force);
+            finalX += _diff.x;
+            finalY += _diff.y;
+            finalZ += _diff.z;
+        }
+
         const wave = Math.sin(elapsed * 1.5 + i * 0.005) * 0.03;
 
-        positions[i3] += (tx - positions[i3]) * 0.045;
-        positions[i3 + 1] += (ty + wave - positions[i3 + 1]) * 0.045;
-        positions[i3 + 2] += (tz - positions[i3 + 2]) * 0.045;
+        positions[i3] += (finalX - positions[i3]) * 0.06;
+        positions[i3 + 1] += (finalY + wave - positions[i3 + 1]) * 0.06;
+        positions[i3 + 2] += (finalZ - positions[i3 + 2]) * 0.06;
 
         dummy.position.set(positions[i3], positions[i3 + 1], positions[i3 + 2]);
         const s = 0.85 + Math.sin(elapsed * 2 + i * 0.08) * 0.12;
