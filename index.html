@@ -4,12 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Particle Text</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <canvas id="canvas"></canvas>
     <div id="ui">
         <input type="text" id="nameInput" placeholder="Escribe tu nombre..." maxlength="20" value="CODE">
+        <div class="controls-row">
+            <select id="themeSelect">
+                <option value="neon">Neon</option>
+                <option value="pastel">Pastel</option>
+                <option value="mono">Monocromatico</option>
+                <option value="rainbow" selected>Rainbow</option>
+            </select>
+            <button id="attractionBtn">Modo: Repulsion</button>
+            <button id="screenshotBtn">Screenshot</button>
+       
+            <input type="range" id="countSlider" min="2000" max="20000" value="8000" step="500">
+        </div>
     </div>
     <script type="importmap">
     {

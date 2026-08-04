@@ -7,6 +7,7 @@
 body {
     overflow: hidden;
     background: #000;
+    font-family: 'Google Sans Flex', sans-serif;
 }
 
 #canvas {
@@ -17,25 +18,26 @@ body {
 
 #ui {
     position: fixed;
-    bottom: 40px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
 }
 
 #nameInput {
-    width: 320px;
-    padding: 14px 24px;
+    width: 200px;
+    padding: 5px 8px;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
+    border-radius: 10px;
     color: #fff;
-    font-family: 'Segoe UI', sans-serif;
-    font-size: 16px;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 15px;
+    font-weight: 100;
     text-align: center;
     outline: none;
     backdrop-filter: blur(12px);
@@ -48,4 +50,67 @@ body {
 
 #nameInput::placeholder {
     color: rgba(255, 255, 255, 0.3);
+}
+
+.controls-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+select, button {
+    padding: 5px 8px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #fff;
+    font-family: 'Google Sans Flex', sans-serif;
+    font-size: 11px;
+    font-weight: 100;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+select:hover, button:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+select option {
+    background: #1a1a2e;
+    color: #fff;
+}
+
+#countSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+#countSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #88aaff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#countSlider::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    background: #88aaff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
 }
